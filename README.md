@@ -92,13 +92,13 @@ $$
 Using a psudo random number generator seeded with `k`, a slower algorithm might compute
 
 ```python
-shard(k, n) = n-1 if n < 2 or random.next()*n > n-1 else shard(k, n-1)
+shard(k, n) = n-1 if n = 1 or random.next()*n > n-1 else shard(k, n-1)
 ```
 
 Instead the algorithm is more like:
 
 ```python
-shard(k, n) = n-1 if n < 2 or (r := random.next()) * n > n-1 else shard(k, n-jump(n, r))
+shard(k, n) = n-1 if n = 1 or (r := random.next()) * n > n-1 else shard(k, n-jump(n, r))
 ```
 
 where `jump(n, r)` is based on the inverse of the CDF of the Bernoulli streak distribution.
@@ -125,6 +125,3 @@ The Reservoir Sampling algorithm P is a simple and elegant solution. It is a Ber
 $k/i$ for the $i$-th element, $i > k$. The expected length of the streak is:
  -->
 
-```
-
-```
